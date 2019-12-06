@@ -9,6 +9,16 @@ to use an `IAM role
 If `MFA <https://aws.amazon.com/iam/details/mfa/>`_ is enabled,
 you'll be prompted for the token code.
 
+Notes
+-----
+Modified to have better support when installing on windows platforms
+
+
+Installation
+-----
+pip install git+https://github.com/jinhong-/awsudo.git
+(Run with administrator privileges on windows)
+
 
 Usage
 -----
