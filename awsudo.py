@@ -5,7 +5,7 @@ import argparse
 
 import boto3
 from botocore.exceptions import ProfileNotFound, ClientError
-
+import subprocess
 
 VERSION = '0.2.0'
 CLI_DESCRIPTION = """\
@@ -53,11 +53,7 @@ def fatal_error(error, code=-1):
 def run(credentials, executable, arguments):
     """Run an executable, passing it temporary credentials."""
     os.environ.update(credentials)
-
-    try:
-        os.execlp(executable, executable, *arguments)
-    except OSError as error:
-        fatal_error('{}: {}'.format(os.strerror(error.errno), executable))
+    subprocess.run([executable] + arguments, shell=True, check=True)
 
 
 def show_credentials(credentials):
